@@ -35,7 +35,7 @@
      Session::put('exception',null);
       }
       ?></p>
-      <form action="{{url('/adminlogin')}}" method="post">
+      <form action="{{route('admin.post_login')}}" method="post">
         {{csrf_field()}}
                 <div class="inputs-w3ls">
                   <i class="fa fa-user" aria-hidden="true"></i>

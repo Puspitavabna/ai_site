@@ -11,10 +11,16 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', function () {
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'as' => 'home.index'
+]);
+
+Route::get('/admin', function () {
     return view('admin.admin_login');
 });
-Route::post('/adminlogin','AdminController@login');
+
+Route::post('/admin_login', [
+    'uses' => 'AdminController@login',
+    'as' => 'admin.post_login'
+]);
