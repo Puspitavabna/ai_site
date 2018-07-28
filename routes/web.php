@@ -11,6 +11,10 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.admin_login');
 });
+Route::post('/adminlogin','AdminController@login');
