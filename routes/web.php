@@ -16,11 +16,16 @@ Route::get('/', [
     'as' => 'home.index'
 ]);
 
-Route::get('/admin', function () {
-    return view('admin.admin_login');
-});
 
-Route::post('/admin_login', [
-    'uses' => 'AdminController@login',
-    'as' => 'admin.post_login'
-]);
+Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
+		Route::get('/', [
+		    'uses' => 'Admin\AdminController@index',
+		    'as' => 'admin.index'
+		]);
+
+		Route::post('/admin_login', [
+		    'uses' => 'Admin\AdminController@login',
+		    'as' => 'admin_post_login'
+		]);
+		Route::resource('/admin_articles','Admin\AdminArticlesController');
+	});

@@ -43,7 +43,7 @@
     </script>
 @endif
 
-<script src="{{ asset('js/jquery-2.2.4.min.js')}}"></script>
+<script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
 
 @yield('run_custom_js_file')

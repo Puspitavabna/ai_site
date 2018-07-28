@@ -1,1 +1,4 @@
-index.blade.php
+@extends('layouts.master')
+@section('content')
+abc
+@endsection
