@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home.index'
@@ -22,10 +24,17 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		    'uses' => 'Admin\AdminController@index',
 		    'as' => 'admin.index'
 		]);
+    Route::get('/', [
+        'uses' => 'Admin\AdminController@index',
+        'as' => 'admin.index'
+    ]);
 
 		Route::post('/admin_login', [
 		    'uses' => 'Admin\AdminController@login',
 		    'as' => 'admin_post_login'
 		]);
-		Route::resource('/admin_articles','Admin\AdminArticlesController');
+		Route::resource('/admin_tutorials','Admin\AdminTutorialsController');
+
+
+
 	});

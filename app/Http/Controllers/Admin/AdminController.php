@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index(){
-    	dd('abc');
+       return view('admin.index');
     }
 }

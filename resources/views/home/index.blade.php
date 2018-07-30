@@ -1,4 +1,4 @@
 @extends('layouts.master')
 @section('content')
-abc
+   abc
 @endsection
