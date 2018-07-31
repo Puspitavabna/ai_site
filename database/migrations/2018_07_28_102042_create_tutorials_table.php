@@ -19,7 +19,8 @@ class CreateTutorialsTable extends Migration
            $table->mediumText('description');
            $table->integer('category_id');
            $table->integer('user_id');
-           
+           $table->string('slug');
+
             $table->timestamps();
         });
     }

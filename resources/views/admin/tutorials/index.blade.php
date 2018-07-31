@@ -23,9 +23,9 @@
                             <td>{{$tutorial->category_id}}</td>
                             <td>{{$tutorial->description}}</td>
                             <td>
-                                <a href="{{ route('admin_tutorial.show', $tutorial) }}" class="btn btn-outline-primary">Views</a>
-                                <a href="{{ route('admin_tutorial.edit', $tutorial) }}" class="btn btn-outline-warning">Edit</a>
-                                <a href="{{ route('admin_tutorial.destroy', $tutorial) }}" class="btn btn-outline-danger">Delete</a>
+                                <a href="{{ route('tutorial.show', $tutorial->slug) }}" class="btn btn-outline-primary">Views</a>
+                                <a href="{{ route('admin_tutorial.edit', $tutorial->slug) }}" class="btn btn-outline-warning">Edit</a>
+                                <a href="{{ route('admin_tutorial.destroy', $tutorial->slug) }}" class="btn btn-outline-danger">Delete</a>
                             </td>
                         </tr>
                     @endforeach

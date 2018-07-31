@@ -18,6 +18,10 @@ Route::get('/', [
     'as' => 'home.index'
 ]);
 
+Route::get('/tutorial/{slug}', [
+    'uses' => 'TutorialController@show',
+    'as' => 'tutorial.show'
+]);
 
 Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		Route::get('/', [
@@ -34,7 +38,4 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		    'as' => 'admin_post_login'
 		]);
 		Route::resource('/admin_tutorial','Admin\AdminTutorialController');
-
-
-
 	});

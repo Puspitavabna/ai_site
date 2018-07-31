@@ -19,6 +19,7 @@ class AdminTutorialController extends Controller
     public function create(){
         return view ('admin.tutorials.create');
     }
+
     public function store(Request $request){
         $tutorial = new Tutorial();
         $tutorial->title = $request->title;
