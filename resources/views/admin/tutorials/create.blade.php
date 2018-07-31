@@ -4,6 +4,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success">
+                    <p class="alert-danger"><?php
+                        $exception=Session::get('exception');
+
+                        if($exception){
+                            echo $exception;
+                            Session::put('exception',null);
+                        }
+                        ?></p>
                     <form method="post" action="{{ route('admin_tutorials.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group"> <!-- Name field -->
@@ -12,21 +20,22 @@
                         </div>
 
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">URL Slug</label>
-                            <input class="form-control" name="slug" type="text" required />
+                            <label class="control-label " for="name">Description</label>
+
+                            <input class="form-control" name="description" type="text" required />
                         </div>
 
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">Keyword</label>
-                            <input class="form-control" name="keyword" type="text" required />
-                        </div>
+                            <label class="control-label " for="name">Category_id</label>
 
+                            <input class="form-control" name="category_id" type="number" required />
+                        </div>
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">Meta Description</label>
-                            <textarea class="form-control" name="meta_description" type="text" required></textarea>
-                        </div>
+                            <label class="control-label " for="name">User_id</label>
 
-                        <input type="hidden" value="5" name="category_id" class="category_id_value">
+                            <input class="form-control" name="user_id" type="number" required />
+                        </div>
+                        {{--<input type="hidden" value="5" name="category_id" class="category_id_value">--}}
 
                         {{--<div class="form-group category-box">--}}
                         {{--<div>Select category here:</div>--}}
@@ -38,16 +47,11 @@
                         {{--</select>--}}
                         {{--</div>--}}
 
-                        <div class="form-group">
-                            <div class="alert alert-success">
-                                <h5>Upload Thumbnail Image</h5>
-                                <input type="file" name="image">
-                            </div>
-                        </div>
-                        <div class="form-group"> <!-- Message field -->
-                            <label class="control-label " for="message">Message</label>
-                            <textarea class="form-control" id="summernote" name="body" required></textarea>
-                        </div>
+
+                        {{--<div class="form-group"> <!-- Message field -->--}}
+                            {{--<label class="control-label " for="message">Message</label>--}}
+                            {{--<textarea class="form-control" id="summernote" name="body" required></textarea>--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary ">Submit</button>
