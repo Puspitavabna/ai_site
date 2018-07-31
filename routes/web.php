@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		    'uses' => 'Admin\AdminController@login',
 		    'as' => 'admin_post_login'
 		]);
-		Route::resource('/admin_tutorials','Admin\AdminTutorialsController');
+		Route::resource('/admin_tutorial','Admin\AdminTutorialController');
 
 
 
