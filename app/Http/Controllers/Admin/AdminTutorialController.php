@@ -13,7 +13,8 @@ use Auth;
 class AdminTutorialController extends Controller
 {
     public function index(){
-        return view('admin.tutorials.index');
+        $tutorials = Tutorial::all();
+        return view('admin.tutorials.index', compact('tutorials'));
     }
     public function create(){
         return view ('admin.tutorials.create');
