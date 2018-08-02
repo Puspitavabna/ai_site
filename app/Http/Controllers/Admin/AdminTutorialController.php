@@ -14,10 +14,10 @@ class AdminTutorialController extends Controller
 {
     public function index(){
         $tutorials = Tutorial::all();
-        return view('admin.tutorials.index', compact('tutorials'));
+        return view('admin.tutorial.index', compact('tutorials'));
     }
     public function create(){
-        return view ('admin.tutorials.create');
+        return view ('admin.tutorial.create');
     }
 
     public function store(Request $request){
@@ -29,5 +29,9 @@ class AdminTutorialController extends Controller
         $tutorial->save();
         Session::flash('success','Tutorials added successfully!!');
         return redirect()->route('admin_tutorial.index');
+    }
+
+    public function edit(){
+        
     }
 }
