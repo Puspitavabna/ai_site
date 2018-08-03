@@ -31,7 +31,28 @@ class AdminTutorialController extends Controller
         return redirect()->route('admin_tutorial.index');
     }
 
-    public function edit(){
-        
+    public function edit($slug){
+        $tutorial = Tutorial::where('slug', $slug)->first();
+        return view ('admin.tutorial.edit', compact('tutorial'));
     }
+
+    public function update(Request $request, $slug){
+        $tutorial = Tutorial::where('slug', $slug)->first();
+        $tutorial->title = $request->title;
+        $tutorial->description = $request->description;
+        $tutorial->category_id = $request->category_id;
+        $tutorial->user_id = Auth::user()->id;
+        $tutorial->save();
+        Session::flash('success','Tutorials updated successfully!!');
+        return redirect()->route('admin_tutorial.index');
+    }
+
+    public function destroy($slug){
+            $tutorial = Tutorial::where('slug', $slug)->first();
+            $tutorial->delete();
+            Session::flash('success','Tutorial Delete successfully');
+            return redirect()->route('admin_tutorial.index');
+        }
+
+
 }

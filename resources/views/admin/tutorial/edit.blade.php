@@ -12,28 +12,29 @@
                             Session::put('exception',null);
                         }
                         ?></p>
-                    <form method="post" action="{{ route('admin_tutorial.create') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin_tutorial.update', $tutorial->slug) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        <input name="_method" type="hidden" value="PUT">
                         <div class="form-group"> <!-- Name field -->
                             <label class="control-label " for="name">Title</label>
-                            <input class="form-control" name="title" type="text" value="{{($tutorial->title)}}" required />
+                            <input class="form-control" name="title" type="text"  value="{{$tutorial->title}}" />
                         </div>
 
                         <div class="form-group"> <!-- Name field -->
                             <label class="control-label " for="name">Description</label>
 
-                            <input class="form-control" name="description" type="text"value="{{($tutorial->description)}}"required />
+                            <input class="form-control" name="description" type="text" value="{{$tutorial->description}}" />
                         </div>
 
                         <div class="form-group"> <!-- Name field -->
                             <label class="control-label " for="name">Category_id</label>
 
-                            <input class="form-control" name="category_id" type="number" value="{{($tutorial->category_id)}}" required />
+                            <input class="form-control" name="category_id" type="number" value="{{$tutorial->category_id}}"  />
                         </div>
                         <div class="form-group"> <!-- Name field -->
                             <label class="control-label " for="name">User_id</label>
 
-                            <input class="form-control" name="user_id" type="number" value="{{($tutorial->user_idai)}}" required />
+                            <input class="form-control" name="user_id" type="number" value="{{$tutorial->user_id}}"  />
                         </div>
                         {{--<input type="hidden" value="5" name="category_id" class="category_id_value">--}}
 

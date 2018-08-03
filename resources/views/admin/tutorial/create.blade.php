@@ -14,6 +14,7 @@
                         ?></p>
                     <form method="post" action="{{ route('admin_tutorial.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
+
                         <div class="form-group"> <!-- Name field -->
                             <label class="control-label " for="name">Title</label>
                             <input class="form-control" name="title" type="text" required />
