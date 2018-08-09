@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Tutorial;
+use App\Models\Category;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\Redirect;
 use DB;
@@ -13,11 +15,13 @@ use Auth;
 class AdminTutorialController extends Controller
 {
     public function index(){
-        $tutorials = Tutorial::all();
+        $tutorials = Tutorial::where('status', true)->orderBy('created_at','desc')->Paginate(10);
         return view('admin.tutorial.index', compact('tutorials'));
     }
     public function create(){
-        return view ('admin.tutorial.create');
+        $categories = Category::all();
+        $users = User::all();
+        return view ('admin.tutorial.create', compact('categories','users'));
     }
 
     public function store(Request $request){
