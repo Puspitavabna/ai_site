@@ -13,7 +13,7 @@ class CreateTutorialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutorial', function (Blueprint $table) {
+        Schema::create('tutorials', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
            $table->mediumText('description');
@@ -33,6 +33,6 @@ class CreateTutorialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutorial');
+        Schema::dropIfExists('tutorials');
     }
 }

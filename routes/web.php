@@ -38,4 +38,6 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		    'as' => 'admin_post_login'
 		]);
 		Route::resource('/admin_tutorial','Admin\AdminTutorialController');
+		Route::resource('/admin_quiz_question','Admin\QuizQuestionController');
+
 	});
