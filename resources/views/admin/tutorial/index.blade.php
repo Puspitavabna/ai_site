@@ -12,7 +12,7 @@
                         <thead>
                             <tr>
                                 <th>Title </th>
-                                <th>Category_id</th>
+                                <th>Category_name</th>
                                 <th>description</th>
                             </tr>
                         </thead>
@@ -22,7 +22,7 @@
                         <tr>
 
                             <td>{{$tutorial->title}}</td>
-                            <td>{{$tutorial->category_id}}</td>
+                            <td>{{$tutorial->category_name}}</td>
                             <td>{{$tutorial->description}}</td>
                             <td>
                                 <a href="{{ route('tutorial.show', $tutorial->slug) }}" class="btn btn-outline-primary">Views</a>

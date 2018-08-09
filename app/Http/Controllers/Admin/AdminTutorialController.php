@@ -21,9 +21,13 @@ class AdminTutorialController extends Controller
     }
 
     public function store(Request $request){
+        $slug = strtolower($request['title']);
+        $slug = str_replace(' ', '-', $slug);
+
         $tutorial = new Tutorial();
         $tutorial->title = $request->title;
         $tutorial->description = $request->description;
+        $tutorial->slug = $slug;
         $tutorial->category_id = $request->category_id;
         $tutorial->user_id = Auth::user()->id;
         $tutorial->save();
