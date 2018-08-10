@@ -1,30 +1,30 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Quiz;
+use App\Models\QuizQuestion;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\User;
+use Auth;
+use Session;
 
 class AdminQuizQuestionController extends Controller
 {
     public function index(){
-        $questions = Quiz::where('status', true)->orderBy('created_at','desc')->Paginate(10);
-        return view('admin.quiz.index', compact('questions'));
+        $questions = QuizQuestion::orderBy('created_at','desc')->Paginate(10);
+        return view('admin.quiz_question.index', compact('questions'));
     }
     public function create(){
         $categories = Category::all();
         $users = User::all();
-        return view ('admin.quiz.quiz_question', compact('categories','users'));
+        return view ('admin.quiz_question.create', compact('categories','users'));
     }
 
     public function store(Request $request){
-        $slug = strtolower($request['title']);
-        $slug = str_replace(' ', '-', $slug);
 
-        $question = new Quiz();
+        $question = new QuizQuestion();
         $question->title = $request->title;
-        $question->quiz_question = $request->quiz_question;
-        $question->slug = $slug;
+        $question->question = $request->question;
         $question->category_id = $request->category_id;
         $question->user_id = Auth::user()->id;
         $question->save();
@@ -32,7 +32,7 @@ class AdminQuizQuestionController extends Controller
         return redirect()->route('admin_quiz_question.index');
     }
     public function destroy($slug){
-        $question = Quiz::where('slug', $slug)->first();
+        $question = QuizQuestion::where('slug', $slug)->first();
         $question->delete();
         Session::flash('success','Question delete successfully');
         return redirect()->route('admin_quiz_question.index');

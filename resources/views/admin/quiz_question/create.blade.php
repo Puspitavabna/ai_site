@@ -3,16 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @include('includes.message')
                 <div class="alert alert-success">
-                    <p class="alert-danger"><?php
-                        $exception=Session::get('exception');
-
-                        if($exception){
-                            echo $exception;
-                            Session::put('exception',null);
-                        }
-                        ?></p>
-                    <form method="post" action="{{ route('admin_quiz.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin_quiz_question.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group"> <!-- Name field -->
@@ -21,9 +14,9 @@
                         </div>
 
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">quiz_question</label>
+                            <label class="control-label " for="name">question</label>
 
-                            <input class="form-control" name="quiz_question" placeholder="quiz_question" required></input>
+                            <input class="form-control" name="question" placeholder="question" required></input>
                         </div>
                         <div class="form-group category-box">
                             <div>Select category here:</div>

@@ -20,7 +20,7 @@ class CreateTutorialsTable extends Migration
            $table->integer('category_id');
            $table->integer('user_id');
            $table->string('slug');
-           $table->boolean('status');
+           $table->boolean('status')->auth();
 
             $table->timestamps();
         });
