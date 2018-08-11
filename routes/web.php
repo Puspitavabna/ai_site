@@ -39,5 +39,6 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		]);
 		Route::resource('/admin_tutorial','Admin\AdminTutorialController');
 		Route::resource('/admin_quiz_question','Admin\AdminQuizQuestionController');
+		Route::resource('/admin_quiz_answar','Admin\AdminQuizAnswarController');
 
 	});
