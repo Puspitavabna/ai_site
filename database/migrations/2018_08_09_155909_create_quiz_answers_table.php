@@ -18,7 +18,6 @@ class CreateQuizAnswersTable extends Migration
             $table->string('quiz_option');
             $table->integer('quiz_question_id');
             $table->string('correct_answer');
-            $table->mediumText('answer_description');
             $table->timestamps();
         });
     }

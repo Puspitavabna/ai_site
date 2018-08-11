@@ -15,6 +15,7 @@
                             <th>Category_name</th>
                             <th>User</th>
                             <th>question</th>
+                            <th>Add Answer</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -27,8 +28,7 @@
                                 <td>{{$question->user->name}}</td>
                                 <td>{{$question->question}}</td>
                                 <td>
-
-                                    {{--<a href="{{ route('admin_quiz_question.edit', $question->slug) }}" class="btn btn-outline-warning">Edit</a>--}}
+                                    <a href="{{ route('admin_quiz_answer.create', [ 'question_id' => $question->id]) }}" class="btn btn-outline-warning">ans</a>
                                     {{--<form method="POST" action="{{ route('admin_quiz_question.destroy', $question->slug) }}">--}}
                                         {{--{{ csrf_field() }}--}}
                                         {{--<input name="_method" type="hidden" value="DELETE">--}}

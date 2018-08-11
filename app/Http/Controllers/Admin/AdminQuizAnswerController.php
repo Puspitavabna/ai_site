@@ -11,7 +11,7 @@ use Session;
 class AdminQuizanswerController extends Controller
 {
     public function index(){
-        $questions = Quizanswer::orderBy('created_at','desc')->Paginate(10);
+        $questions = QuizAnswer::orderBy('created_at','desc')->Paginate(10);
         return view('admin.quiz_answer.index', compact('questions'));
     }
     public function create(){
@@ -22,7 +22,7 @@ class AdminQuizanswerController extends Controller
 
     public function store(Request $request){
 
-        $question = new Quizanswer();
+        $question = new QuizAnswer();
         $question->title = $request->title;
         $question->question = $request->question;
         $question->category_id = $request->category_id;
@@ -32,7 +32,7 @@ class AdminQuizanswerController extends Controller
         return redirect()->route('admin_quiz_answer.index');
     }
     public function destroy($slug){
-        $question = Quizanswer::where('slug', $slug)->first();
+        $question = QuizAnswer::where('slug', $slug)->first();
         $question->delete();
         Session::flash('success','Question delete successfully');
         return redirect()->route('admin_quiz_answer.index');

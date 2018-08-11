@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Quizanswer extends Model
+class QuizAnswer extends Model
 {
 
     public function category()

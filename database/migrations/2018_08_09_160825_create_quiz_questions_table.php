@@ -18,6 +18,7 @@ class CreateQuizQuestionsTable extends Migration
             $table->text('title');
             $table->string('question');
             $table->integer('user_id');
+            $table->text('answer_description')->nullable();
             $table->integer('category_id');
             $table->timestamps();
         });

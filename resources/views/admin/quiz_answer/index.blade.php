@@ -11,9 +11,8 @@
                     <table id="order-listing" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Title </th>
-                            <th>Category_name</th>
-                            <th>User</th>
+                            {{--<th>Category_name</th>--}}
+                            {{--<th>User</th>--}}
                             <th>Correct answer</th>
                             <th>answer Description</th>
                         </tr>
@@ -22,10 +21,9 @@
 
                         @foreach($questions as $question)
                             <tr>
-                                <td>{{$question->title}}</td>
 
-                                <td>{{$question->category->name}}</td>
-                                <td>{{$question->user->name}}</td>
+                                {{--<td>{{$question->category->name}}</td>--}}
+                                {{--<td>{{$question->user->name}}</td>--}}
                                 <td>{{$question->correct_answer}}</td>
                                 <td>{{$question->answer_description}}</td>
                                 <td>

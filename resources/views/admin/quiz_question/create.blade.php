@@ -18,6 +18,13 @@
 
                             <input class="form-control" name="question" placeholder="question" required></input>
                         </div>
+
+                        <div class="form-group"> <!-- Name field -->
+                            <label class="control-label " for="answer_description">Answer Description</label>
+
+                            <textarea class="form-control" name="answer_description" placeholder="answer_description" required></textarea>
+                        </div>
+
                         <div class="form-group category-box">
                             <div>Select category here:</div>
                             <select name="category_id" class="form-control category_select" data-value="1">
