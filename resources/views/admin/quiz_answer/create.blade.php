@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 @include('includes.message')
                 <div class="alert alert-success">
-                    <form method="post" action="{{ route('admin_quiz_answar.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin_quiz_answer.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 4
                         <div class="form-group"> <!-- Name field -->
@@ -14,14 +14,14 @@
                         </div>
 
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="correct_answar">question</label>
+                            <label class="control-label " for="correct_answer">question</label>
 
-                            <input class="form-control" name="correct_answar" type="text" placeholder="correct_answar" required/>
+                            <input class="form-control" name="correct_answer" type="text" placeholder="correct_answer" required/>
                         </div>
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="answar_description">question</label>
+                            <label class="control-label " for="answer_description">question</label>
 
-                            <textarea class="form-control" name="answar_description" placeholder="answar_description" required></textarea>
+                            <textarea class="form-control" name="answer_description" placeholder="answer_description" required></textarea>
                         </div>
                         <div class="form-group category-box">
                             <div>Select category here:</div>

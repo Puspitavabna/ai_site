@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    Here you will get tutorial. <a href="{{ route('admin_quiz_answar.create') }}">Answars</a>
+                    Here you will get tutorial. <a href="{{ route('admin_quiz_answer.create') }}">answers</a>
 
                 </div>
                 <div class="alert alert-success">
@@ -14,8 +14,8 @@
                             <th>Title </th>
                             <th>Category_name</th>
                             <th>User</th>
-                            <th>Correct Answar</th>
-                            <th>Answar Description</th>
+                            <th>Correct answer</th>
+                            <th>answer Description</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,8 +26,8 @@
 
                                 <td>{{$question->category->name}}</td>
                                 <td>{{$question->user->name}}</td>
-                                <td>{{$question->correct_answar}}</td>
-                                <td>{{$question->answar_description}}</td>
+                                <td>{{$question->correct_answer}}</td>
+                                <td>{{$question->answer_description}}</td>
                                 <td>
 
                                     {{--<a href="{{ route('admin_quiz_question.edit', $question->slug) }}" class="btn btn-outline-warning">Edit</a>--}}
