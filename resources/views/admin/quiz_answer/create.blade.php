@@ -8,10 +8,10 @@
                     <form method="post" action="{{ route('admin_quiz_answer.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 4
-                        <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name" >quiz_option</label>
-                            <input class="form-control" name="title" type="text" placeholder="title" required />
-                        </div>
+                        {{--<div class="form-group"> <!-- Name field -->--}}
+                            {{--<label class="control-label " for="name" >quiz_option</label>--}}
+                            {{--<input class="form-control" name="title" type="text" placeholder="title" required />--}}
+                        {{--</div>--}}
 
                         <div class="form-group"> <!-- Name field -->
                             <label class="control-label " for="correct_answer">question</label>

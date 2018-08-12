@@ -14,7 +14,7 @@
                             {{--<th>Category_name</th>--}}
                             {{--<th>User</th>--}}
                             <th>Correct answer</th>
-                            <th>answer Description</th>
+                            {{--<th>answer Description</th>--}}
                         </tr>
                         </thead>
                         <tbody>
@@ -25,7 +25,7 @@
                                 {{--<td>{{$question->category->name}}</td>--}}
                                 {{--<td>{{$question->user->name}}</td>--}}
                                 <td>{{$question->correct_answer}}</td>
-                                <td>{{$question->answer_description}}</td>
+                                {{--<td>{{$question->answer_description}}</td>--}}
                                 <td>
 
                                     {{--<a href="{{ route('admin_quiz_question.edit', $question->slug) }}" class="btn btn-outline-warning">Edit</a>--}}

@@ -8,7 +8,7 @@ use App\User;
 use Auth;
 use Session;
 
-class AdminQuizanswerController extends Controller
+class AdminQuizAnswerController extends Controller
 {
     public function index(){
         $questions = QuizAnswer::orderBy('created_at','desc')->Paginate(10);
@@ -23,14 +23,19 @@ class AdminQuizanswerController extends Controller
     public function store(Request $request){
 
         $question = new QuizAnswer();
-        $question->title = $request->title;
-        $question->question = $request->question;
-        $question->category_id = $request->category_id;
-        $question->user_id = Auth::user()->id;
+//        $question->title = $request->title;
+//        $question->question = $request->question;
+        $question->correct_answer = $request->correct_answer;
         $question->save();
         Session::flash('success','Question added successfully!!');
         return redirect()->route('admin_quiz_answer.index');
     }
+
+    public function show($id){
+        $question = new QuizAnswer();
+        return view('admin.quiz_answer.show', compact('question'));
+    }
+
     public function destroy($slug){
         $question = QuizAnswer::where('slug', $slug)->first();
         $question->delete();
