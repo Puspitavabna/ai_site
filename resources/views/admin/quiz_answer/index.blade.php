@@ -19,12 +19,12 @@
                         </thead>
                         <tbody>
 
-                        @foreach($questions as $question)
+                        @foreach($answers as $answer)
                             <tr>
 
                                 {{--<td>{{$question->category->name}}</td>--}}
                                 {{--<td>{{$question->user->name}}</td>--}}
-                                <td>{{$question->correct_answer}}</td>
+                                <td>{{$answer->correct_answer}}</td>
                                 {{--<td>{{$question->answer_description}}</td>--}}
                                 <td>
 

@@ -12,7 +12,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{{$question->correct_answer}}</td>
+                            <td>{{$answer->correct_answer}}</td>
                         </tr>
                         </tbody>
                     </table>

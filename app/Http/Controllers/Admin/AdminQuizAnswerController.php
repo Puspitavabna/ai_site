@@ -11,8 +11,8 @@ use Session;
 class AdminQuizAnswerController extends Controller
 {
     public function index(){
-        $questions = QuizAnswer::orderBy('created_at','desc')->Paginate(10);
-        return view('admin.quiz_answer.index', compact('questions'));
+        $answers = QuizAnswer::orderBy('created_at','desc')->Paginate(10);
+        return view('admin.quiz_answer.index', compact('answers'));
     }
     public function create(){
         $categories = Category::all();
@@ -22,23 +22,23 @@ class AdminQuizAnswerController extends Controller
 
     public function store(Request $request){
 
-        $question = new QuizAnswer();
+        $answer = new QuizAnswer();
 //        $question->title = $request->title;
 //        $question->question = $request->question;
-        $question->correct_answer = $request->correct_answer;
-        $question->save();
+        $answer->correct_answer = $request->correct_answer;
+        $answer->save();
         Session::flash('success','Question added successfully!!');
         return redirect()->route('admin_quiz_answer.index');
     }
 
     public function show($id){
-        $question = new QuizAnswer();
-        return view('admin.quiz_answer.show', compact('question'));
+        $answer = new QuizAnswer();
+        return view('admin.quiz_answer.show', compact('answer'));
     }
 
     public function destroy($slug){
-        $question = QuizAnswer::where('slug', $slug)->first();
-        $question->delete();
+        $answer = QuizAnswer::where('slug', $slug)->first();
+        $answer->delete();
         Session::flash('success','Question delete successfully');
         return redirect()->route('admin_quiz_answer.index');
     }
