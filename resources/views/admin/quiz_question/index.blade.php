@@ -13,28 +13,28 @@
                         <tr>
                             <th>Title </th>
                             <th>Category_name</th>
-                            <th>User</th>
                             <th>question</th>
-                            <th>Add Answer</th>
+                            <th>Add Option</th>
                         </tr>
                         </thead>
-                        <tbody>
 
+                        <tbody>
                         @foreach($questions as $question)
                             <tr>
                                 <td>{{$question->title}}</td>
-
                                 <td>{{$question->category->name}}</td>
-                                <td>{{$question->user->name}}</td>
-                                <td>{{$question->question}}</td>
                                 <td>
-                                    <a href="{{ route('admin_quiz_answer.create', [ 'question_id' => $question->id]) }}" class="btn btn-outline-warning">add</a>
-                                    <a href=="{{ route('admin_quiz_answer.show', [ 'question_id' => $question->id]) }}" class="btn btn-outline-warning">ans</a>
-                                    {{--<form method="POST" action="{{ route('admin_quiz_question.destroy', $question->slug) }}">--}}
-                                        {{--{{ csrf_field() }}--}}
-                                        {{--<input name="_method" type="hidden" value="DELETE">--}}
-                                        {{--<input type="submit" value="Delete" class="btn btn-danger">--}}
-                                    {{--</form>--}}
+                                    <div>
+                                        {{$question->question}}
+                                    </div>
+
+                                    @foreach($question->quiz_answers as $quiz_answer)
+                                        <span class="btn-sm btn-success">{{ $quiz_answer->quiz_option }}</span>
+                                    @endforeach
+
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin_quiz_answer.create', [ 'quiz_question_id' => $question->id]) }}" class="btn btn-outline-warning">add</a>
                                 </td>
                             </tr>
                         @endforeach

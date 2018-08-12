@@ -14,17 +14,19 @@ class AdminQuizAnswerController extends Controller
         $answers = QuizAnswer::orderBy('created_at','desc')->Paginate(10);
         return view('admin.quiz_answer.index', compact('answers'));
     }
-    public function create(){
+    public function create(Request $request){
+        $quiz_question_id = $request->quiz_question_id;
         $categories = Category::all();
         $users = User::all();
-        return view ('admin.quiz_answer.create', compact('categories','users'));
+        return view ('admin.quiz_answer.create', compact('categories','users', 'quiz_question_id'));
     }
 
     public function store(Request $request){
 
         $answer = new QuizAnswer();
-//        $question->title = $request->title;
-//        $question->question = $request->question;
+
+        $answer->quiz_option = $request->quiz_option;
+        $answer->quiz_question_id = $request->quiz_question_id;
         $answer->correct_answer = $request->correct_answer;
         $answer->save();
         Session::flash('success','Question added successfully!!');
