@@ -11,8 +11,8 @@ use Session;
 class AdminQuizQuestionController extends Controller
 {
     public function index(){
-        $questions = QuizQuestion::orderBy('created_at','desc')->Paginate(10);
-        return view('admin.quiz_question.index', compact('questions'));
+        $quiz_questions = QuizQuestion::orderBy('created_at','desc')->Paginate(10);
+        return view('admin.quiz_question.index', compact('quiz_questions'));
     }
     public function create(){
         $categories = Category::all();

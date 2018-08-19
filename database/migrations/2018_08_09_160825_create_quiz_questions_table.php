@@ -16,9 +16,10 @@ class CreateQuizQuestionsTable extends Migration
         Schema::create('quiz_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->text('title');
-            $table->string('question');
+            $table->string('question_details');
             $table->integer('user_id');
-            $table->text('answer_description')->nullable();
+            $table->text('answer_explanation')->nullable();
+            $table->boolean('is_correct')->default(0);
             $table->integer('category_id');
             $table->timestamps();
         });

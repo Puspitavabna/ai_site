@@ -19,7 +19,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($questions as $question)
+                        @foreach($quiz_questions as $question)
                             <tr>
                                 <td>{{$question->title}}</td>
                                 <td>{{$question->category->name}}</td>
@@ -27,12 +27,11 @@
                                     <div>
                                         {{$question->question}}
                                     </div>
-
                                     @foreach($question->quiz_answers as $quiz_answer)
                                         <span class="btn-sm btn-success">{{ $quiz_answer->quiz_option }}</span>
                                     @endforeach
-
                                 </td>
+
                                 <td>
                                     <a href="{{ route('admin_quiz_answer.create', [ 'quiz_question_id' => $question->id]) }}" class="btn btn-outline-warning">add</a>
                                 </td>
