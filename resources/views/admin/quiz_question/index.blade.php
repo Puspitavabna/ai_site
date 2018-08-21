@@ -30,7 +30,7 @@
                                 {{$question->question}}
                                 </div>
                                 @foreach($question->quiz_answers as $quiz_answer)
-                                <span class="btn-sm btn-success">{{ $quiz_answer->answer_details }}</span>
+                                    <span class="btn-sm btn-{{ $quiz_answer->is_correct? 'success' : 'info' }}">{{ $quiz_answer->answer_details }}</span>
                                 @endforeach
                                 </td>
                                 <td>

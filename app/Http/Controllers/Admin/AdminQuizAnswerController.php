@@ -22,11 +22,16 @@ class AdminQuizAnswerController extends Controller
     }
 
     public function store(Request $request){
+        if(empty($request->is_correct)){
+            $is_correct = false;
+        } else {
+            $is_correct = true;
+        }
 
         $answer = new QuizAnswer();
         $answer->quiz_question_id = $request->quiz_question_id;
         $answer->answer_details = $request->answer_details;
-        $answer->is_correct = $request->is_correct;
+        $answer->is_correct = $is_correct;
         $answer->save();
         Session::flash('success','Question added successfully!!');
         return redirect()->route('admin_quiz_question.index');
