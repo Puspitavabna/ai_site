@@ -9,20 +9,8 @@
                         {{ csrf_field() }}
 
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name" >Title</label>
-                            <input class="form-control" name="title" type="text" placeholder="Title" required />
-                        </div>
-
-                        <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">question</label>
-
-                            <input class="form-control" name="question" placeholder="question" required></input>
-                        </div>
-
-                        <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="answer_description">Answer Description</label>
-
-                            <textarea class="form-control" name="answer_description" placeholder="answer_description" required></textarea>
+                            <label class="control-label " for="name" >question_details</label>
+                            <input class="form-control" name="question_details" type="text" placeholder="question_details" required />
                         </div>
 
                         <div class="form-group category-box">
@@ -31,15 +19,6 @@
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id}}"> {{ $category->name }} </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group category-box">
-                            <div>Select User here:</div>
-                            <select name="user_id" class="form-control category_select" data-value="1">
-                                <option value="">Select User</option>
-                                @foreach ($users as $user)
-                                    <option value="{{ $user->id}}"> {{ $user->name }} </option>
                                 @endforeach
                             </select>
                         </div>

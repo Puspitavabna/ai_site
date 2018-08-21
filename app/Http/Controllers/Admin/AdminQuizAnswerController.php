@@ -24,13 +24,12 @@ class AdminQuizAnswerController extends Controller
     public function store(Request $request){
 
         $answer = new QuizAnswer();
-
-        $answer->quiz_option = $request->quiz_option;
         $answer->quiz_question_id = $request->quiz_question_id;
-        $answer->correct_answer = $request->correct_answer;
+        $answer->answer_details = $request->answer_details;
+        $answer->is_correct = $request->is_correct;
         $answer->save();
         Session::flash('success','Question added successfully!!');
-        return redirect()->route('admin_quiz_answer.index');
+        return redirect()->route('admin_quiz_question.index');
     }
 
     public function show($id){

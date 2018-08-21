@@ -21,7 +21,6 @@
 
                     @foreach($tutorials as $tutorial)
                         <tr>
-
                             <td>{{$tutorial->title}}</td>
                             <td>{{$tutorial->category->name}}</td>
                             <td>{{$tutorial->user->name}}</td>

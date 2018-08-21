@@ -17,7 +17,7 @@ class CreateQuizAnswersTable extends Migration
             $table->increments('id');
             $table->string('answer_details');
             $table->integer('quiz_question_id');
-            $table->integer('quiz_question_id');
+            $table->boolean('is_correct')->nullable()->default(0);
             $table->timestamps();
         });
     }

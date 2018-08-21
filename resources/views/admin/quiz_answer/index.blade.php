@@ -13,7 +13,7 @@
                         <tr>
                             {{--<th>Category_name</th>--}}
                             {{--<th>User</th>--}}
-                            <th>Correct answer</th>
+                            <th>answer details</th>
                             {{--<th>answer Description</th>--}}
                         </tr>
                         </thead>
@@ -24,7 +24,7 @@
 
                                 {{--<td>{{$question->category->name}}</td>--}}
                                 {{--<td>{{$question->user->name}}</td>--}}
-                                <td>{{$answer->correct_answer}}</td>
+                                <td>{{$answer->answer_details}}</td>
                                 {{--<td>{{$question->answer_description}}</td>--}}
                                 <td>
 

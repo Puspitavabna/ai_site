@@ -23,9 +23,9 @@ class AdminQuizQuestionController extends Controller
     public function store(Request $request){
 
         $question = new QuizQuestion();
-        $question->title = $request->title;
-        $question->question = $request->question;
-        $question->answer_description = $request->answer_description;
+        $question->question_details = $request->question_details;
+        $question->answer_explanation = $request->answer_explanation;
+        $question->is_correct = $request->is_correct;
         $question->category_id = $request->category_id;
         $question->user_id = Auth::user()->id;
         $question->save();

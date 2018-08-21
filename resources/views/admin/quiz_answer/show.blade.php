@@ -7,12 +7,12 @@
                     <table id="order-listing" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>correct_answer</th>
+                            <th>answer_details</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{{$answer->correct_answer}}</td>
+                            <td>{{$answer->answer_details}}</td>
                         </tr>
                         </tbody>
                     </table>

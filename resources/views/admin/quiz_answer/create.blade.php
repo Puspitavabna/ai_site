@@ -9,14 +9,15 @@
                         {{ csrf_field() }}
 
                         <input type="hidden" name="quiz_question_id" value="{{ $quiz_question_id }}">
+
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="quiz_option">Quiz Option</label>
-                            <input class="form-control" name="quiz_option" placeholder="quiz option" type="text" required/>
+                            <label class="control-label " for="name" >answer_details</label>
+                            <input class="form-control" name="answer_details" type="text" placeholder="answer_details" required />
                         </div>
 
                         <div class="form-group"> <!-- Name field -->
-                            <span>correct answer:</span>
-                            <input name="correct_answer" value="1" type="checkbox"/>
+                            <span>is correct:</span>
+                            <input name="is_correct" value="1" type="checkbox"/>
                         </div>
 
                         <div class="form-group">
