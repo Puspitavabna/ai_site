@@ -28,6 +28,11 @@ class AdminQuizAnswerController extends Controller
             $is_correct = true;
         }
 
+        if($request->is_correct == true){
+            $quiz_answers = QuizAnswer::where('quiz_question_id', $request->quiz_question_id);
+            $quiz_answers->update(['is_correct' => false ]);
+        }
+
         $answer = new QuizAnswer();
         $answer->quiz_question_id = $request->quiz_question_id;
         $answer->answer_details = $request->answer_details;
