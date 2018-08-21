@@ -22,6 +22,11 @@ Route::get('/tutorial/{slug}', [
     'uses' => 'TutorialController@show',
     'as' => 'tutorial.show'
 ]);
+Route::get('/quiz', [
+    'uses' => 'QuizQuestionController@show',
+    'as' => 'quiz.show'
+]);
+
 
 Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		Route::get('/', [
