@@ -30,7 +30,8 @@
                 {{--{{ $tutorial->category_id }}--}}
                 {{--{{ $tutorial->description }}--}}
             {{--</div>--}}
-        </div>
-    </div>
+            </div>
+</div>
+</div>
 </div>
 @endsection
