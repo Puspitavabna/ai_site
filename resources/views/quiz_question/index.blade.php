@@ -12,7 +12,7 @@
 
 
                     <tr class="col-md-6 news-text two">
-                <form method="POST" action="{{ route('quiz_question.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('quiz_result.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @foreach($quiz_questions as $question)
                         <tr>
@@ -22,7 +22,11 @@
                                     {{$question->question}}
                                 </div>
                                 @foreach($question->quiz_answers as $quiz_answer)
-                                        <input type="radio" name="answer_details[question_id_{{ $question->id }}]" value="{{ $quiz_answer->id }}"> {{ $quiz_answer->answer_details }}<br>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="selected_answers[question_id_{{ $question->id }}]" value="{{ $quiz_answer->id }}"> {{ $quiz_answer->answer_details }}<br>
+                                        </label>
+                                    </div>
                                 @endforeach
                             </td>
                         </tr>

@@ -24,12 +24,7 @@ Route::get('/tutorial/{slug}', [
 ]);
 
 Route::resource('/quiz_question','QuizQuestionController');
-
-Route::get('/quiz_result', [
-    'uses' => 'QuizResultController@show',
-    'as' => 'result.show'
-]);
-
+Route::resource('/quiz_result','QuizResultController');
 
 Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		Route::get('/', [

@@ -11,4 +11,7 @@ class QuizResult extends Model
     {
         return $this->hasMany('App\Models\QuizTopic');
     }
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

@@ -19,4 +19,7 @@ class QuizQuestion extends Model
     {
         return $this->hasMany('App\Models\QuizAnswer');
     }
+    public function quiz_topic(){
+        return $this->belongsTo('App\Models\QuizTopic');
+    }
 }
