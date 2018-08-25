@@ -11,7 +11,6 @@
                     <table id="order-listing" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Category_name</th>
                             <th>question</th>
                             <th>Answer</th>
                             <th>Add Option</th>
@@ -23,7 +22,6 @@
                         <tbody>
                         @foreach($quiz_questions as $question)
                             <tr>
-                                <td>{{$question->category->name}}</td>
                                 <td>{{$question->question_details}}</td>
                                 <td>
                                 <div>

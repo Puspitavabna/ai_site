@@ -20,8 +20,6 @@
                         <td>{{$tutorial->category_id}}</td>
                         <td>{{$tutorial->description}}</td>
                         <td>
-
-
                         </td>
                      </tr>
                   @endforeach

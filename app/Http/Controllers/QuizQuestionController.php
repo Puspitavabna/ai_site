@@ -6,10 +6,13 @@ use App\Models\QuizQuestion;
 
 class QuizQuestionController extends Controller
 {
-    public function show(){
-
+    public function index(){
         $quiz_questions = QuizQuestion::all();
-        return view('quiz.show', compact('quiz_questions'));
+        return view('quiz_question.create', compact('quiz_questions'));
+    }
+
+    public function store(Request $request){
+        dd();
     }
 
 }

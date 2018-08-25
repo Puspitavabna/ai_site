@@ -22,9 +22,12 @@ Route::get('/tutorial/{slug}', [
     'uses' => 'TutorialController@show',
     'as' => 'tutorial.show'
 ]);
-Route::get('/quiz', [
-    'uses' => 'QuizQuestionController@show',
-    'as' => 'quiz.show'
+
+Route::resource('/quiz_question','QuizQuestionController');
+
+Route::get('/quiz_result', [
+    'uses' => 'QuizResultController@show',
+    'as' => 'result.show'
 ]);
 
 
@@ -45,5 +48,6 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		Route::resource('/admin_tutorial','Admin\AdminTutorialController');
 		Route::resource('/admin_quiz_question','Admin\AdminQuizQuestionController');
 		Route::resource('/admin_quiz_answer','Admin\AdminQuizAnswerController');
+		Route::resource('/admin_quiz_topic','Admin\AdminQuizTopicController');
 
 	});

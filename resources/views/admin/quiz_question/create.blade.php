@@ -13,15 +13,15 @@
                             <input class="form-control" name="question_details" type="text" placeholder="question_details" required />
                         </div>
 
-                        <div class="form-group category-box">
-                            <div>Select category here:</div>
-                            <select name="category_id" class="form-control category_select" data-value="1">
-                                <option value="">Select Category</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id}}"> {{ $category->name }} </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        {{--<div class="form-group category-box">--}}
+                            {{--<div>Select category here:</div>--}}
+                            {{--<select name="category_id" class="form-control category_select" data-value="1">--}}
+                                {{--<option value="">Select Category</option>--}}
+                                {{--@foreach ($categories as $category)--}}
+                                    {{--<option value="{{ $category->id}}"> {{ $category->name }} </option>--}}
+                                {{--@endforeach--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary ">Submit</button>

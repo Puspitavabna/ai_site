@@ -24,7 +24,7 @@ class AdminQuizQuestionController extends Controller
         $question = new QuizQuestion();
         $question->question_details = $request->question_details;
         $question->answer_explanation = $request->answer_explanation;
-        $question->category_id = $request->category_id;
+//        $question->category_id = $request->category_id;
         $question->user_id = Auth::user()->id;
         $question->save();
         Session::flash('success','Question added successfully!!');
