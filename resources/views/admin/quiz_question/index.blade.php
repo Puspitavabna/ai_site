@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    Here you will get tutorial. <a href="{{ route('admin_quiz_question.create') }}">Create Questions</a>
+                    Here you will get tutorial. <a href="{{ route('admin_quiz_question.create', ['quiz_topic_id' =>  Request::get('quiz_topic_id')]) }}">Create Questions</a>
 
                 </div>
                 <div class="alert alert-success">
@@ -14,8 +14,6 @@
                             <th>question</th>
                             <th>Answer</th>
                             <th>Add Option</th>
-
-
                         </tr>
                         </thead>
 

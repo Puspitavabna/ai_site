@@ -10,8 +10,14 @@ use Session;
 
 class AdminQuizQuestionController extends Controller
 {
-    public function index(){
-        $quiz_questions = QuizQuestion::orderBy('created_at','desc')->Paginate(10);
+    public function index(Request $request){
+        $quiz_topic_id = $request->quiz_topic_id;
+
+        if(empty($quiz_topic_id)){
+            $quiz_questions = QuizQuestion::orderBy('created_at','desc')->Paginate(10);
+        } else {
+            $quiz_questions = QuizQuestion::where('quiz_topic_id', $quiz_topic_id)->orderBy('created_at','desc')->Paginate(10);
+        }
         return view('admin.quiz_question.index', compact('quiz_questions'));
     }
     public function create(){
@@ -21,14 +27,15 @@ class AdminQuizQuestionController extends Controller
     }
 
     public function store(Request $request){
+        $quiz_topic_id = $request->quiz_topic_id;
         $question = new QuizQuestion();
         $question->question_details = $request->question_details;
         $question->answer_explanation = $request->answer_explanation;
-//        $question->category_id = $request->category_id;
+        $question->quiz_topic_id = $quiz_topic_id;
         $question->user_id = Auth::user()->id;
         $question->save();
         Session::flash('success','Question added successfully!!');
-        return redirect()->route('admin_quiz_question.index');
+        return redirect()->route('admin_quiz_question.index', ['quiz_topic_id' => $quiz_topic_id]);
     }
     public function destroy($slug){
         $question = QuizQuestion::where('slug', $slug)->first();

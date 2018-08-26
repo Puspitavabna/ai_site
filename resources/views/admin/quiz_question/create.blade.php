@@ -8,20 +8,11 @@
                     <form method="post" action="{{ route('admin_quiz_question.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
+                        <input type="hidden" name="quiz_topic_id" value="{{Request::get('quiz_topic_id')}}"/>
                         <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name" >question_details</label>
-                            <input class="form-control" name="question_details" type="text" placeholder="question_details" required />
+                            <label class="control-label " for="name" >Question Details</label>
+                            <input class="form-control" name="question_details" type="text" placeholder="Write Question here" required />
                         </div>
-
-                        {{--<div class="form-group category-box">--}}
-                            {{--<div>Select category here:</div>--}}
-                            {{--<select name="category_id" class="form-control category_select" data-value="1">--}}
-                                {{--<option value="">Select Category</option>--}}
-                                {{--@foreach ($categories as $category)--}}
-                                    {{--<option value="{{ $category->id}}"> {{ $category->name }} </option>--}}
-                                {{--@endforeach--}}
-                            {{--</select>--}}
-                        {{--</div>--}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary ">Submit</button>
