@@ -18,7 +18,7 @@
                         @foreach($quiz_results as $quiz_result)
                         <tr>
                             <td>{{$quiz_result->user->name}}</td>
-                            <td>{{$quiz_result->quiz_topic_id}}</td>
+                            <td>{{$quiz_result->quiz_topic->topic_name}}</td>
                             <td>{{$quiz_result->marks}}</td>
                         </tr>
                         @endforeach
