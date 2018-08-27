@@ -1,37 +1,32 @@
 @extends('layouts.master')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-success">
-                <table id="order-listing" class="table table-striped">
+    @include('includes.header')
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Title </th>
-                        <th>Category_id</th>
-                        <th>description</th>
+                        <th>Tutorials</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>{{$tutorial->title}}</td>
-                        <td>{{$tutorial->category_id}}</td>
-                        <td>{{$tutorial->description}}</td>
-                    </tr>
+                        @foreach($category_tutorials as $category_tutorial)
+                            <tr>
+                                <td><a href="#">{{$category_tutorial->title}}</a> </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
-            {{--<div>--}}
-                {{--Tutorial Title--}}
-                {{--Category-id--}}
-                {{--Description--}}
-            {{--</div>--}}
-            {{--<div>--}}
-                {{--{{ $tutorial->title }}--}}
-                {{--{{ $tutorial->category_id }}--}}
-                {{--{{ $tutorial->description }}--}}
-            {{--</div>--}}
             </div>
-</div>
-</div>
-</div>
+
+            <div class="col-md-9">
+                <h3>{{ $tutorial->title }}</h3>
+                <p class="category">{{$tutorial->category->name}}</p>
+                <p class="meta">{{ $tutorial->created_at->format('m-d-Y') }}</p>
+                <p>{{ $tutorial->description }}</p>
+            </div>
+        </div>
+    </div>
 @endsection
