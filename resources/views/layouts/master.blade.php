@@ -21,8 +21,6 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ asset('img/apple-touch-icon-114x114-precomposed.png')}}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ asset('img/apple-touch-icon-144x144-precomposed.png')}}">
 
-
-
     <!-- BASE CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- YOUR CUSTOM CSS -->
