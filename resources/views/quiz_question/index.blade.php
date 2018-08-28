@@ -1,50 +1,32 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                {{--<div>--}}
-                    {{--Here you will get tutorial. <a href="{{ route('admin_quiz_question.create') }}">Create Tutorials</a>--}}
 
-                {{--</div>--}}
-
-
-                    <tr class="col-md-6 news-text two">
-                <form method="POST" action="{{ route('quiz_result.store') }}" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    @foreach($quiz_questions as $question)
-                        <tr>
-                            <td>{{$question->question_details}}</td>
-                            <td>
-                                <div>
-                                    {{$question->question}}
-                                </div>
-                                @foreach($question->quiz_answers as $quiz_answer)
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="selected_answers[question_id_{{ $question->id }}]" value="{{ $quiz_answer->id }}"> {{ $quiz_answer->answer_details }}<br>
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </td>
-                        </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST" action="{{ route('quiz_result.store') }}" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                @foreach($quiz_questions as $key => $question)
+                    <div>{{ $key + 1 }}. {{$question->question_details}}</div>
+                    <div>
+                         {{$question->question}}
+                    </div>
+                    @foreach($question->quiz_answers as $quiz_answer)
+                        <div>
+                            <label>
+                                <input type="radio" name="selected_answers[question_id_{{ $question->id }}]" value="{{ $quiz_answer->id }}"> {{ $quiz_answer->answer_details }}<br>
+                            </label>
+                        </div>
                     @endforeach
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary ">Submit</button>
-                        <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
-                    </div>
-                </form>
-
-
-
-
-                    </div>
-
-                    <div class="clearfix"></div>
+                @endforeach
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary ">Submit</button>
+                    <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 @endsection
 
 

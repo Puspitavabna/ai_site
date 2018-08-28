@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success">
-                    <form method="post" action="{{ route('admin_topic.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin_quiz_topic.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group"> <!-- Name field -->
