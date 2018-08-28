@@ -11,8 +11,8 @@ use Session;
 class QuizResultController extends Controller
 {
     public function index(){
-
-        $quiz_results = QuizResult::all();
+        $user = Auth::user();
+        $quiz_results = QuizResult::where('user_id', $user->id )->get();
         return view('quiz_result.index', compact('quiz_results'));
     }
 

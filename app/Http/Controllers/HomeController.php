@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Tutorial;
+use App\Models\QuizTopic;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,8 +25,10 @@ class HomeController extends Controller
     public function index()
     {
 //        return view( 'home.index');
+        $quiz_topics = QuizTopic::orderBy('created_at','desc')->Paginate(10);
         $tutorials = Tutorial::all();
-        return view('home.index', compact('tutorials'));
+        return view('home.index', compact('tutorials', 'quiz_topics'));
+
     }
 
 }
