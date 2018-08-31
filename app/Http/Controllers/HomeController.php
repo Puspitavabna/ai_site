@@ -14,7 +14,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -24,11 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        return view( 'home.index');
         $quiz_topics = QuizTopic::orderBy('created_at','desc')->Paginate(10);
         $tutorials = Tutorial::all();
         return view('home.index', compact('tutorials', 'quiz_topics'));
-
     }
 
 }
