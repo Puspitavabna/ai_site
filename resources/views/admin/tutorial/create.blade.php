@@ -1,17 +1,13 @@
 @extends('layouts.master')
 @section('content')
+    @section('run_custom_css_file')
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    @endsection
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success">
-                    <p class="alert-danger"><?php
-                        $exception=Session::get('exception');
-
-                        if($exception){
-                            echo $exception;
-                            Session::put('exception',null);
-                        }
-                        ?></p>
                     <form method="post" action="{{ route('admin_tutorial.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -20,11 +16,11 @@
                             <input class="form-control" name="title" type="text" placeholder="Title" required />
                         </div>
 
-                        <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">Description</label>
 
-                            <textarea class="form-control" name="description" placeholder="Description" required></textarea>
+                        <div class="form-group">
+                            <textarea class="summernote" name="description" placeholder="Description"></textarea>
                         </div>
+
                         <div class="form-group category-box">
                             <div>Select category here:</div>
                             <select name="category_id" class="form-control category_select" data-value="1">
@@ -54,4 +50,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+@section('run_custom_js_file')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+@endsection
+@section('run_custom_jquery')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+    </script>
 @endsection
