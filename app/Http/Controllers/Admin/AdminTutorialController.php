@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Tutorial;
 use App\Models\Category;
+use App\Models\Upload;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\Redirect;
@@ -13,6 +14,8 @@ use Session;
 use Auth;
 use DomDocument;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\ImageManagerStatic as Image;
+use Carbon\Carbon;
 
 class AdminTutorialController extends Controller
 {
@@ -102,7 +105,7 @@ class AdminTutorialController extends Controller
         $upload->name = $filename;
         $upload->folder_path = $folder_path;
         $upload->md5_hash = $img_md5_value;
-        $upload->article_id = $tutorial->id;
+        $upload->tutorial_id = $tutorial->id;
         $upload->save();
         $image = Image::make($src)
             // resize if required
@@ -117,6 +120,11 @@ class AdminTutorialController extends Controller
     
     public function edit($slug){
         $tutorial = Tutorial::where('slug', $slug)->first();
+        $upload = Upload::where('tutorial_id', $tutorial->id)->orderBy('created_at','desc')->get();
+        $image_exist = null;
+        if(!empty($tutorial->thumbnail_id)){
+            $image_exist = Upload::find($tutorial->thumbnail_id);
+        }
         return view ('admin.tutorial.edit', compact('tutorial'));
     }
     public function update(Request $request, $slug){
@@ -126,12 +134,45 @@ class AdminTutorialController extends Controller
         $tutorial->category_id = $request->category_id;
         $tutorial->user_id = Auth::user()->id;
         $tutorial->save();
+
+
+        if(!empty(Input::file('image'))){
+            $this->saveThumbnail($tutorial);
+        }
+        $message = $request->input('description');
+        $dom = new DomDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML("<div>$message</div>");
+        $container = $dom->getElementsByTagName('div')->item(0);
+        $container = $container->parentNode->removeChild($container);
+        while ($dom->firstChild) {
+            $dom->removeChild($dom->firstChild);
+        }
+        while ($container->firstChild) {
+            $dom->appendChild($container->firstChild);
+        }
+        $images = $dom->getElementsByTagName('img');
+        foreach ($images as $img) {
+            $src = $img->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                $this->mime_type_image_save($src,$img,$tutorial);
+            }
+        }
+        $tutorial->description = $dom->saveHTML();
+        $tutorial->update();
         Session::flash('success','Tutorials updated successfully!!');
         return redirect()->route('admin_tutorial.index');
     }
     public function destroy($slug){
-            $tutorial = Tutorial::where('slug', $slug)->first();
-            $tutorial->delete();
+        $tutorial = Tutorial::where('slug', $slug)->first();
+        if(!$tutorial){
+            return redirect()->route('admin_tutorial.index')->with(['fail' => 'Page not found !']);
+        }
+        foreach($tutorial->uploads as $upload){
+            unlink(public_path($upload->folder_path.$upload->name));
+            $upload->destroy($upload->id);
+        }
+        $tutorial->delete();
             Session::flash('success','Tutorial Delete successfully');
             return redirect()->route('admin_tutorial.index');
         }

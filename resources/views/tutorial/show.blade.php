@@ -25,7 +25,7 @@
                 <h3>{{ $tutorial->title }}</h3>
                 <p class="category">{{$tutorial->category->name}}</p>
                 <p class="meta">{{ $tutorial->created_at->format('m-d-Y') }}</p>
-                <p>{{ $tutorial->description }}</p>
+                <p>{!! $tutorial->description !!}</p>
             </div>
         </div>
     </div>

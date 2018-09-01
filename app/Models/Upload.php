@@ -8,6 +8,6 @@ class Upload extends Model
 
     public function tutorial()
     {
-        return $this->hasMany('App\Models\Tutorial');
+        return $this->belongsTo('App\Models\Tutorial');
     }
 }

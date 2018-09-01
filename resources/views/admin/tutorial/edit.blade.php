@@ -1,17 +1,14 @@
 @extends('layouts.master')
 @section('content')
+@section('run_custom_css_file')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+@endsection
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success">
-                    <p class="alert-danger"><?php
-                        $exception=Session::get('exception');
-
-                        if($exception){
-                            echo $exception;
-                            Session::put('exception',null);
-                        }
-                        ?></p>
+                    <p class="alert-danger"></p>
                     <form method="post" action="{{ route('admin_tutorial.update', $tutorial->slug) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input name="_method" type="hidden" value="PUT">
@@ -20,12 +17,9 @@
                             <input class="form-control" name="title" type="text"  value="{{$tutorial->title}}" />
                         </div>
 
-                        <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">Description</label>
-
-                            <input class="form-control" name="description" type="text" value="{{$tutorial->description}}" />
+                        <div class="form-group">
+                            <textarea class="summernote" name="description" placeholder="Description">{{ $tutorial->description }}</textarea>
                         </div>
-
                         <div class="form-group"> <!-- Name field -->
                             <label class="control-label " for="name">Category_id</label>
 
@@ -64,4 +58,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+@section('run_custom_js_file')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+@endsection
+@section('run_custom_jquery')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+    </script>
 @endsection

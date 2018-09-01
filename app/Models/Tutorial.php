@@ -15,4 +15,7 @@ class Tutorial extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function uploads(){
+        return $this->hasMany('App\Models\Upload');
+    }
 }
