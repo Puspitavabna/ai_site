@@ -39,10 +39,10 @@ class AdminTutorialController extends Controller
         $tutorial->user_id = Auth::user()->id;
         $tutorial->save();
 
-        $message = $request->input('description');
+        $description = $request->input('description');
         $dom = new DomDocument();
         libxml_use_internal_errors(true);
-        $dom->loadHTML("<div>$message</div>");
+        $dom->loadHTML("<div>$description</div>");
 
         $container = $dom->getElementsByTagName('div')->item(0);
         $container = $container->parentNode->removeChild($container);
@@ -135,14 +135,13 @@ class AdminTutorialController extends Controller
         $tutorial->user_id = Auth::user()->id;
         $tutorial->save();
 
-
         if(!empty(Input::file('image'))){
             $this->saveThumbnail($tutorial);
         }
-        $message = $request->input('description');
+        $description = $request->input('description');
         $dom = new DomDocument();
         libxml_use_internal_errors(true);
-        $dom->loadHTML("<div>$message</div>");
+        $dom->loadHTML("<div>$description</div>");
         $container = $dom->getElementsByTagName('div')->item(0);
         $container = $container->parentNode->removeChild($container);
         while ($dom->firstChild) {
@@ -152,12 +151,29 @@ class AdminTutorialController extends Controller
             $dom->appendChild($container->firstChild);
         }
         $images = $dom->getElementsByTagName('img');
+
+        $current_upload_names = Upload::where('tutorial_id', $tutorial->id)->pluck('name')->toArray();
+
+        $updated_upload_names = [];
         foreach ($images as $img) {
             $src = $img->getAttribute('src');
             if (preg_match('/data:image/', $src)) {
                 $this->mime_type_image_save($src,$img,$tutorial);
+            } else {
+                $updated_upload_names[] = basename($src);
             }
         }
+
+        $unused_upload_names = array_diff($current_upload_names, $updated_upload_names);
+
+        if(!empty($unused_upload_names)){
+            foreach($unused_upload_names as $unused_upload_name){
+                $unused_upload = Upload::where('name', $unused_upload_name)->first();
+                unlink(public_path($unused_upload->folder_path.$unused_upload->name));
+                $unused_upload->destroy($unused_upload->id);
+            }
+        }
+
         $tutorial->description = $dom->saveHTML();
         $tutorial->update();
         Session::flash('success','Tutorials updated successfully!!');
