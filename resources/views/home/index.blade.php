@@ -22,9 +22,7 @@
                     </div>
                 </div>
             @endforeach
-
-
-                <div class="col-md-6">
+            <div class="col-md-6">
                     <?php $category = [] ?>
                     @foreach($quiz_topics as $quiz_topic)
                         @if(!in_array($quiz_topic->category->name, $category))
